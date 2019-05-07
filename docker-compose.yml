@@ -1,0 +1,13 @@
+version: '0.1.0'
+
+services:
+  app:
+    build: .
+    command: npm run watch # 覆盖容器启动后默认执行的命令
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app/
