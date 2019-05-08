@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  app:
+    build:
+      context: .
+      target: builder
+    command: ["npm", "run", "watch"]
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./src:/app/src

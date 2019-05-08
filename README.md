@@ -4,12 +4,25 @@
 
 tslint 使用 `standard style` https://standardjs.com/ & https://github.com/blakeembrey/tslint-config-standard
 
+## TODO
+- [ ] logger
+- [ ] docker dev and prod
+- [ ] package optimization
+
+## Docker Config
+- https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+- https://medium.com/datreeio/node-js-docker-workflow-b9d936c931e1
+- https://hackernoon.com/i-have-a-confession-to-make-i-commit-to-master-6a804f334beb
+- https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
+
+
 ## Install & Run
 
 ### Local
 
 ```shell
 npm install # install dependencies
+npm run build # build ts files
 npm run start # start 
 ```
 
@@ -22,9 +35,20 @@ npm run watch
 
 ### Docker
 ```shell
-doucker build -t gostudy:8.11.3-alpine -f Dockerfile-base .
-docker-compose up # compose and run
+docker build -t gostudy:9-alpine -f Dockerfile-base .
+
+# development
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 docker-compose down # destroy application
+
+# production
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up
+docker-compose down # destroy application
+
+# build
+docker build -t gostudy
 ```
 
 ## npm commands
