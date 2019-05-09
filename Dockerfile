@@ -9,9 +9,9 @@ FROM gostudy:9-alpine AS builder
 
 WORKDIR /app
 
-COPY ./package*.json /app
+COPY ./package*.json /app/
 RUN npm install --registry=https://registry.npm.taobao.org
-COPY . /app
+COPY . /app/
 
 RUN npm run tslint \
   && npm run build
@@ -24,7 +24,7 @@ ENV PORT=3000
 
 WORKDIR /app
 
-COPY ./package*.json /app
+COPY ./package*.json /app/
 RUN npm install --production --registry=https://registry.npm.taobao.org
 COPY --from=builder /app/dist /app/dist
 
