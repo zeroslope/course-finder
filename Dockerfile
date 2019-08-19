@@ -1,5 +1,5 @@
 # stage 1
-FROM gostudy:9-alpine AS builder
+FROM node:9-alpine AS builder
 
 # install gyp tools
 # RUN apk add --update --no-cache \
@@ -17,7 +17,7 @@ RUN npm run tslint \
   && npm run build
 
 # stage 2
-FROM gostudy:9-alpine
+FROM node:9-alpine
 
 ENV NODE_ENV=production
 ENV PORT=3000

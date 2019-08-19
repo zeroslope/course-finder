@@ -1,18 +1,13 @@
 import express from 'express'
+import { ApolloServer, gql } from 'apollo-server-express'
+import typeDefs from './graphql/schema'
+import resolvers from './graphql/resolvers'
+
+const server = new ApolloServer({ typeDefs, resolvers })
 
 const app = express()
+server.applyMiddleware({ app })
 
-app.set('port', process.env.PORT || 3000)
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(app.get('port'), () => {
-  console.log(
-    '  App is running at http://localhost:%d in %s mode',
-    app.get('port'),
-    app.get('env')
-  )
-  console.log('  Press CTRL-C to stop\n')
-})
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+)

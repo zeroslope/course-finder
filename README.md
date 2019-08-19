@@ -35,8 +35,6 @@ npm run watch
 
 ### Docker
 ```shell
-docker build -t gostudy:9-alpine -f Dockerfile-base .
-
 # development
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
@@ -48,7 +46,7 @@ docker-compose -f docker-compose.yml up
 docker-compose down # destroy application
 
 # build
-docker build -t gostudy
+docker build -t fudan.today
 ```
 
 ## npm commands
